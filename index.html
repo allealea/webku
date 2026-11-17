@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CelenganKu — Rencana Tabungan</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="CelenganKu beranda"><span class="brand-icon">🍓</span> Celengan<span>Ku</span></a>
+        <span class="local-note"><span class="online-dot"></span> Data tersimpan di perangkatmu</span>
+      </header>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Rencana keuanganmu</p>
+          <h1>my savings <span>journey</span></h1>
+          <p class="intro-copy">Atur target, sisihkan uang, dan pantau pengeluaranmu dalam satu tempat.</p>
+        </div>
+        <div class="intro-illustration" aria-hidden="true">🍓<span>✦</span></div>
+      </section>
+
+      <section class="target-card panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 — TARGET TABUNGAN</p>
+            <h2>Sepatu impianmu</h2>
+          </div>
+          <span class="badge">🎯 Fokusmu</span>
+        </div>
+        <form id="targetForm" class="target-form">
+          <label>Nama target
+            <input id="targetName" type="text" maxlength="40" placeholder="Contoh: Sepatu baru" required />
+          </label>
+          <label>Harga target
+            <div class="input-prefix"><span>Rp</span><input id="targetAmount" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="500000" aria-label="Harga target dalam rupiah, angka saja" required /></div>
+          </label>
+          <label>Ingin tercapai tanggal
+            <input id="targetDate" type="date" required />
+          </label>
+          <button class="button button-dark" type="submit">Simpan target <span>→</span></button>
+        </form>
+        <div class="target-summary">
+          <div class="target-title-row"><div><span class="muted-label">TARGET SAAT INI</span><h3 id="displayTarget">Sepatu impianmu</h3></div><span id="daysLeft" class="days-pill">Atur targetmu</span></div>
+          <div class="progress-labels"><span>Tabungan terkumpul</span><strong id="progressText">Rp0 <span>/ Rp0</span></strong></div>
+          <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+          <div class="target-bottom"><span id="progressPercent">0% tercapai</span><span id="dailyNeed">Atur target dan tanggal untuk mulai</span></div>
+        </div>
+      </section>
+
+      <section class="quick-stats" aria-label="Ringkasan keuangan">
+        <article class="stat-card"><div class="stat-icon green">↗</div><div><p>Total ditabung</p><strong id="totalSaved">Rp0</strong></div></article>
+        <article class="stat-card"><div class="stat-icon orange">↘</div><div><p>Total pengeluaran</p><strong id="totalSpent">Rp0</strong></div></article>
+        <article class="stat-card"><div class="stat-icon purple">▦</div><div><p>Pengeluaran hari ini</p><strong id="spentToday">Rp0</strong></div></article>
+      </section>
+
+      <section class="activity-grid">
+        <article class="panel form-panel">
+          <div class="section-heading compact"><div><p class="eyebrow">02 — TAMBAH UANG</p><h2>Catat aktivitas</h2></div><span class="coin-icon">＋</span></div>
+          <div class="tabs" role="tablist" aria-label="Jenis aktivitas">
+            <button class="tab active" id="saveTab" type="button" role="tab" aria-selected="true">🍓 Menabung</button>
+            <button class="tab" id="spendTab" type="button" role="tab" aria-selected="false">🧾 Pengeluaran</button>
+          </div>
+          <form id="activityForm">
+            <label id="activityAmountLabel" for="activityAmount">Jumlah yang ditabung</label>
+            <div class="input-prefix amount-field"><span>Rp</span><input id="activityAmount" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="Contoh: 2000" aria-label="Jumlah dalam rupiah, angka saja" required /></div>
+            <label for="activityNote">Catatan <span class="optional">(opsional)</span></label>
+            <input id="activityNote" type="text" maxlength="60" placeholder="Contoh: Uang jajan hari ini" />
+            <label for="activityDate">Tanggal</label>
+            <input id="activityDate" type="date" required />
+            <button id="activitySubmit" class="button button-green" type="submit">＋ Catat tabungan</button>
+          </form>
+        </article>
+
+        <article class="panel history-panel">
+          <div class="section-heading compact"><div><p class="eyebrow">03 — RIWAYAT</p><h2>Aktivitas terakhir</h2></div><span class="history-count" id="historyCount">0 aktivitas</span></div>
+          <div id="historyList" class="history-list"></div>
+        </article>
+      </section>
+      <footer>Langkah kecil hari ini, jadi pencapaian besar nanti. <span>✨</span></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
